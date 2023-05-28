@@ -1,0 +1,151 @@
+<!-- <div class="bootstrap-wrapper">
+    <div class="container box">
+        <div class="row" style="margin-top: 10px ;">
+            <div class="col-md-6 offset-md-3">
+                
+                <mat-card>
+
+                <div class="container text-center">
+                    <img src="../../../assets/download.jpg">
+                </div>
+<h1 class="text-center">Register Here</h1>
+<form (ngSubmit)="formSubmit()">
+
+<mat-form-field class="full-width" appearance="outline">
+    <mat-label>User Name</mat-label>
+    <input 
+    [(ngModel)]="user.username"
+    name="username"
+    required
+    matInput placeholder="Enter Here" />
+    <mat-hint>User name must be unique</mat-hint>
+</mat-form-field>
+
+<mat-form-field class="full-width" appearance="outline">
+    <mat-label>Password</mat-label>
+    <input 
+    [(ngModel)]="user.password"
+    name="password"
+    required
+
+    matInput placeholder="Enter Here" />
+</mat-form-field>
+
+<mat-form-field class="full-width" appearance="outline">
+    <mat-label>First Name</mat-label>
+    <input
+    [(ngModel)]="user.firstname"
+    name="firstname"
+    required
+
+    matInput placeholder="Enter Here" />
+</mat-form-field>
+
+<mat-form-field class="full-width" appearance="outline">
+    <mat-label>Last Name</mat-label>
+    <input 
+    [(ngModel)]="user.lastname"
+    name="lastname"
+    required
+
+    matInput placeholder="Enter Here" />
+</mat-form-field>
+
+<mat-form-field class="full-width" appearance="outline">
+    <mat-label>Email</mat-label>
+    <input 
+    [(ngModel)]="user.email"
+    name="email"     required
+
+    type="email" matInput placeholder="Enter Here" />
+</mat-form-field>
+
+<mat-form-field class="full-width" appearance="outline">
+    <mat-label>Phone Number</mat-label>
+    <input 
+    [(ngModel)]="user.phone"
+    name="phone"     required
+
+    type="number" matInput placeholder="Enter Here" />
+</mat-form-field>
+
+<div class="container text-center">
+    <button type="submit" mat-raised-button color="primary">Register</button>
+    <button style="margin-left: 20px" mat-raised-button color="accent">Clear</button>
+
+</div>
+
+</form>
+</mat-card>
+
+
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+
+<div style="width: 95vw;" class="container-fluid px-1 py-5 mx-auto">
+    <div class="row d-flex justify-content-center">
+        <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+            <h3>Create your account</h3>
+            <p class="blue-text">Just fill the details below.</p>
+            <div class="card">
+                <h5 class="text-center mb-4">Enter your details below</h5>
+
+                <div class="row justify-content-between text-left">
+                    <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">First
+                            name<span class="text-danger"> *</span></label> <input class="design" type="text"
+                            id="fname i" [(ngModel)]="accData.fName" placeholder="Enter your first name"> </div>
+                    <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Last
+                            name<span class="text-danger"> *</span></label> <input class="design" type="text" id="lname"
+                            [(ngModel)]="accData.lName" placeholder="Enter your last name"> </div>
+                </div>
+                <div class="row justify-content-between text-left">
+                    <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Personal
+                            email<span class="text-danger"> *</span></label> <input class="design" type="text"
+                            id="email" [(ngModel)]="accData.email" placeholder=""> </div>
+                    <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Phone
+                            number<span class="text-danger"> *</span></label> <input class="design" type="text" id="mob"
+                            [(ngModel)]="accData.phoneNumber" placeholder=""> </div>
+                </div>
+                <div class="row justify-content-between text-left">
+                    <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">PAN
+                            Number<span class="text-danger"> *</span></label> <input class="design" type="text" id="pan"
+                            [(ngModel)]="accData.pan" placeholder=""> </div>
+                    <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Adhar
+                            Number<span class="text-danger"> *</span></label> <input class="design" type="text"
+                            id="aadhar" [(ngModel)]="accData.adhar" placeholder=""> </div>
+                </div>
+                <div class="row justify-content-between text-left">
+                    <div class="form-group col-sm-6 flex-column d-flex"> <label
+                            class="form-control-label px-3">PAssword<span class="text-danger"> *</span></label> <input
+                            class="design" type="text" id="pan" title="8 character, Upper and Lower case" required  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" [(ngModel)]="accData.password" placeholder=""> </div>
+                    <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Enter
+                            valid
+                            custmer No<span class="text-danger"> *</span></label> <input class="design" type="text"
+                            id="aadhar" [(ngModel)]="accData.customerId" placeholder=""> </div>
+                </div>
+                <div class="row justify-content-end">
+                    <div class="form-group col-sm-6"> <button type="submit" (click)="createAccount()"
+                            class="btn-block btn-primary">Create account
+                        </button> </div>
+                </div>
+
+                <div class="check">
+                    <input (click)="typeOfUser('buyer')" class="form-check-input" type="radio" name="IAmBuyer" id="IAmBuyer" value="buyer" [checked]="currentlyChecked === check_box_type.BUYER" (click)="selectCheckBox(check_box_type.BUYER)">
+                    <label class="form-check-label" for="IAmBuyer">
+                        I am Buyer.
+                    </label>
+                </div>
+                <div class="check">
+                    <input  (click)="typeOfUser('seller')" class="form-check-input" type="radio" name="IAmSeller" id="IAmSeller" value="seller" [checked]="currentlyChecked === check_box_type.SELLER" (click)="selectCheckBox(check_box_type.SELLER)">
+                    <label class="form-check-label" for="IAmSeller">
+                        I am Seller.
+                     </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+<div align="center" style="background-color:#F4F5F2;">
+  &#160;&#160;&#160;
+  <div>
+  <a (click)="toAddprop()" type="button" class="btn btn-outline-success">Add Property</a>
+  <br>
+  </div>
+<h1 class="text-lg-center text-success">{{msg}}</h1>
+<div style="background-color:#F4F5F2;">
+  &#160;
+  <div class="container">
+    <div *ngFor="let property of propertyData " class="card sellcard">
+      <div class="imgbx">
+        <img class="img" src="../../assets/images/back.jpg" alt="Card image cap" align="left">
+        <br />
+
+        <div style="text-align: left;">
+          &nbsp;&nbsp;&nbsp;<div style="display: inline-block; text-align: left;">
+            <!-- <h3>Property for sell</h3>
+            <p>{{property.location}}</p>
+            <h3>{{property.price}}</h3>
+            <a  (click)="redirect(property.property_Id)" class="btn btn-primary">Edit</a>&nbsp; -->
+            <h3>{{property.property_Type}}</h3>
+              <p class="c">{{property.location}} <span style="word-spacing: 1cm;"><img style="margin-right: 5px;" src="https://img.icons8.com/material-rounded/20/000000/bed.png"/>{{propertyData.bhk}}BHK'S</span></p>
+              <h3 class="d">{{property.price}}<span><img src="https://img.icons8.com/ios-glyphs/20/000000/building--v1.png"/>{{propertyData.floor}}FLOOR'S</span></h3>
+              <a  (click)="redirect(property.property_Id)" class="btn btn-outline-success">Edit</a>&nbsp;&nbsp;
+              <a (click)="Delete(property.property_Id)"type="button" class="btn btn-outline-danger">Delete</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    &#160;
+  </div>
+</div>

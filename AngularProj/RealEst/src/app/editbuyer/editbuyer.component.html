@@ -1,0 +1,69 @@
+<router-outlet></router-outlet>
+<div class="container-fluid px-1 py-5 mx-auto">
+  <div class="row d-flex justify-content-center">
+    <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+      <h3>Update Account</h3>
+      <p class="blue-text">Just fill the details below.</p>
+      <div class="card">
+        <h5 class="text-center mb-4">Enter your details below</h5>
+
+        <div class="row justify-content-between text-left">
+          <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">First
+              name<span class="text-danger"> *</span></label> <input type="text" id="fname"
+              [(ngModel)]="buyerData.fName" placeholder="Enter your first name"> </div>
+          <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Last name<span
+                class="text-danger"> *</span></label> <input type="text" id="lname" [(ngModel)]="buyerData.lName"
+              placeholder="Enter your last name"> </div>
+        </div>
+        <div class="row justify-content-between text-left">
+          <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Personal
+              email<span class="text-danger"> *</span></label> <input type="text" id="email"
+              [(ngModel)]="buyerData.email" placeholder=""> </div>
+          <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Phone
+              number<span class="text-danger"> *</span></label> <input type="text" id="mob"
+              [(ngModel)]="buyerData.phoneNumber" placeholder=""> </div>
+        </div>
+
+
+        <div class="row justify-content-between text-left">
+          <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">PAN
+              Number<span class="text-danger"> *</span></label> <input type="text" id="pan" [(ngModel)]="buyerData.pan"
+              placeholder=""> </div>
+          <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Adhar
+              Number<span class="text-danger"> *</span></label> <input type="text" id="aadhar"
+              [(ngModel)]="buyerData.adhar" placeholder=""> </div>
+        </div>
+        <div class="row justify-content-between text-left">
+          
+          <div class="form-group col-sm-12 flex-column d-flex"> <label class="form-control-label px-3">Address<span class="text-danger"> *</span></label> <input type="text" id="aadhar"
+              [(ngModel)]="buyerData.address" placeholder=""> </div>
+        </div>
+
+
+        <div class="row justify-content-between text-left">
+          <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Country
+            <span class="text-danger"> *</span></label> <input type="text" id="pan" [(ngModel)]="buyerData.country"
+              placeholder=""> </div>
+          <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">zipcode<span class="text-danger"> *</span></label> <input type="text" id="aadhar"
+              [(ngModel)]="buyerData.zipcode" placeholder=""> </div>
+        </div>
+
+
+        <div class="row justify-content-between text-left">
+          <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">PAssword<span
+                class="text-danger"> *</span></label> <input type="text" id="pan" [(ngModel)]="buyerData.password"
+              placeholder=""> </div>
+          <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Enter valid
+              custmer Number<span class="text-danger"> *</span></label> <input type="text" id="aadhar"
+              [(ngModel)]="buyerData.customerId" placeholder=""> </div>
+        </div>
+
+        <div class="row justify-content-end">
+          <div class="form-group col-sm-6"> <button type="submit" (click)="updateBuyer()"
+              class="btn-block btn-primary">Update account
+            </button> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

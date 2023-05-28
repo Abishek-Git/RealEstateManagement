@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="login">
+        <div class="row">
+            <h2>Sign Up</h2>
+            <div class="col-md-12">
+                <label for="email">Email</label>
+                <input [(ngModel)]="user.email" type="text" class="form-control" id="email" placeholder="mail@mail.com">
+                <br>
+                <label for="password">Password</label>
+                <input  [(ngModel)]="user.password" type="password" class="form-control" id="password" placeholder="passwrod">
+            </div>
+        </div>
+        <p class="text-danger">{{msg}}</p>
+        <div class="row">
+            <div class="col-md-6">
+                <input type="reset" id="reset" value="Reset" class="btn btn-outline-primary btn-form">
+            </div>
+            <div class="col-md-6">
+                <input type="submit" id="register" value="Login" (click)="adminLog()" class="btn btn-outline-success btn-form">
+                    </div>
+                </div>
+            </div>
+        </div>
+  

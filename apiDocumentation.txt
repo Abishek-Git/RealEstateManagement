@@ -1,0 +1,1098 @@
+swagger: '2.0'
+info:
+  description: Real Estate Managment System Project
+  version: '1.0'
+  title: REMS
+  termsOfService: urn:tos
+  contact: {}
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0
+host: localhost:8080
+basePath: /realesmgnt
+tags:
+  - name: customer-rest-controller
+    description: Customer Rest Controller
+  - name: property-rest-controller
+    description: Property Rest Controller
+paths:
+  /home/allcustomer:
+    get:
+      tags:
+        - customer-rest-controller
+      summary: showBuyer
+      operationId: showBuyerUsingGET
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Buyer'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /home/blogin:
+    post:
+      tags:
+        - customer-rest-controller
+      summary: loginByBuyer
+      operationId: loginByBuyerUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: user
+          description: user
+          required: true
+          schema:
+            $ref: '#/definitions/LoginUser'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/LoginUser'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /home/buyerbyid/{buyerid}:
+    get:
+      tags:
+        - customer-rest-controller
+      summary: SearchBuyerById
+      operationId: SearchBuyerByIdUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: buyerid
+          in: path
+          description: buyerid
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /home/createproperty:
+    post:
+      tags:
+        - customer-rest-controller
+      summary: addProperty
+      operationId: addPropertyUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: property
+          description: property
+          required: true
+          schema:
+            $ref: '#/definitions/Property'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Property'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /home/createpurchaseOrder:
+    post:
+      tags:
+        - customer-rest-controller
+      summary: createPurchaseOrder
+      operationId: createPurchaseOrderUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: purchaseOrder
+          description: purchaseOrder
+          required: true
+          schema:
+            $ref: '#/definitions/PurchaseOrder'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/PurchaseOrderService'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /home/createseller:
+    post:
+      tags:
+        - customer-rest-controller
+      summary: createSeller
+      operationId: createSellerUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: seller
+          description: seller
+          required: true
+          schema:
+            $ref: '#/definitions/Seller'
+      responses:
+        '200':
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /home/deleteBuyer/{id}:
+    delete:
+      tags:
+        - customer-rest-controller
+      summary: deleteBuyer
+      operationId: deleteBuyerUsingDELETE
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      deprecated: false
+  /home/deleteproperty/{property_Id}:
+    delete:
+      tags:
+        - customer-rest-controller
+      summary: deleteProperty
+      operationId: deletePropertyUsingDELETE
+      produces:
+        - '*/*'
+      parameters:
+        - name: property_Id
+          in: path
+          description: property_Id
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      deprecated: false
+  /home/deletepurchaseOrder/{sellerId}:
+    delete:
+      tags:
+        - customer-rest-controller
+      summary: deletePurchaseOrder
+      operationId: deletePurchaseOrderUsingDELETE
+      produces:
+        - '*/*'
+      parameters:
+        - name: sellerId
+          in: path
+          description: sellerid
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      deprecated: false
+  /home/deleteseller/{sellerid}:
+    delete:
+      tags:
+        - customer-rest-controller
+      summary: deleteSeller
+      operationId: deleteSellerUsingDELETE
+      produces:
+        - '*/*'
+      parameters:
+        - name: sellerid
+          in: path
+          description: sellerid
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      deprecated: false
+  /home/getlocation:
+    get:
+      tags:
+        - customer-rest-controller
+      summary: getLocation
+      operationId: getLocationUsingGET
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Location'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /home/getproperty:
+    get:
+      tags:
+        - customer-rest-controller
+      summary: getProperty1
+      operationId: getProperty1UsingGET
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Property'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /home/getpropertybyid/{propertyid}:
+    get:
+      tags:
+        - customer-rest-controller
+      summary: getPropertyById
+      operationId: getPropertyByIdUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: propertyid
+          in: path
+          description: propertyid
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Property'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /home/getpurchaseOrder:
+    get:
+      tags:
+        - customer-rest-controller
+      summary: getProperty
+      operationId: getPropertyUsingGET
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/PurchaseOrder'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /home/getseller:
+    get:
+      tags:
+        - customer-rest-controller
+      summary: getSeller
+      operationId: getSellerUsingGET
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Seller'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /home/propertybysellerid/{sellerid}:
+    get:
+      tags:
+        - customer-rest-controller
+      summary: getPropertyBySellerId
+      operationId: getPropertyBySellerIdUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: sellerid
+          in: path
+          description: sellerid
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Property'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /home/registerBuyer:
+    post:
+      tags:
+        - customer-rest-controller
+      summary: createBuyer
+      operationId: createBuyerUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: buyer
+          description: buyer
+          required: true
+          schema:
+            $ref: '#/definitions/Buyer'
+      responses:
+        '200':
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /home/sellerbyid/{sellerid}:
+    get:
+      tags:
+        - customer-rest-controller
+      summary: SearchSellerById
+      operationId: SearchSellerByIdUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: sellerid
+          in: path
+          description: sellerid
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /home/slogin:
+    post:
+      tags:
+        - customer-rest-controller
+      summary: loginBySeller
+      operationId: loginBySellerUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: user
+          description: user
+          required: true
+          schema:
+            $ref: '#/definitions/LoginUser'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/LoginUser'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /home/updateBuyer:
+    put:
+      tags:
+        - customer-rest-controller
+      summary: updateBuyer
+      operationId: updateBuyerUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: buyer
+          description: buyer
+          required: true
+          schema:
+            $ref: '#/definitions/Buyer'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Buyer'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /home/updateproperty:
+    put:
+      tags:
+        - customer-rest-controller
+      summary: updateProperty
+      operationId: updatePropertyUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: property
+          description: property
+          required: true
+          schema:
+            $ref: '#/definitions/Property'
+      responses:
+        '200':
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /home/updatepurchaseOrder:
+    put:
+      tags:
+        - customer-rest-controller
+      summary: updatePurchaseOrder
+      operationId: updatePurchaseOrderUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: purchaseorder
+          description: purchaseorder
+          required: true
+          schema:
+            $ref: '#/definitions/PurchaseOrder'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /home/updateseller:
+    put:
+      tags:
+        - customer-rest-controller
+      summary: updateSeller
+      operationId: updateSellerUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: seller
+          description: seller
+          required: true
+          schema:
+            $ref: '#/definitions/Seller'
+      responses:
+        '200':
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /home/wishlistadd/{buyerid}/{propertyId}:
+    get:
+      tags:
+        - customer-rest-controller
+      summary: addFromWishlist
+      operationId: addFromWishlistUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: buyerid
+          in: path
+          description: buyerid
+          required: true
+          type: integer
+          format: int32
+        - name: propertyId
+          in: path
+          description: propertyId
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Property'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /home/wishlistbyid/{buyerid}:
+    get:
+      tags:
+        - customer-rest-controller
+      summary: wishlistByBuyerId
+      operationId: wishlistByBuyerIdUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: buyerid
+          in: path
+          description: buyerid
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Property'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /home/wishlistremove/{buyerid}/{propertyId}:
+    get:
+      tags:
+        - customer-rest-controller
+      summary: reomveFromWishlist
+      operationId: reomveFromWishlistUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: buyerid
+          in: path
+          description: buyerid
+          required: true
+          type: integer
+          format: int32
+        - name: propertyId
+          in: path
+          description: propertyId
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Property'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /property/createproperty:
+    post:
+      tags:
+        - property-rest-controller
+      summary: addProperty
+      operationId: addPropertyUsingPOST_1
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: property
+          description: property
+          required: true
+          schema:
+            $ref: '#/definitions/Property'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Property'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /property/deleteproperty/{property_Id}:
+    delete:
+      tags:
+        - property-rest-controller
+      summary: deleteProperty
+      operationId: deletePropertyUsingDELETE_1
+      produces:
+        - '*/*'
+      parameters:
+        - name: property_Id
+          in: path
+          description: property_Id
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      deprecated: false
+  /property/getlocation:
+    get:
+      tags:
+        - property-rest-controller
+      summary: getLocation
+      operationId: getLocationUsingGET_1
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Location'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /property/getproperty:
+    get:
+      tags:
+        - property-rest-controller
+      summary: getProperty
+      operationId: getPropertyUsingGET_1
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Property'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /property/getpropertybyid/{propertyid}:
+    get:
+      tags:
+        - property-rest-controller
+      summary: getPropertyById
+      operationId: getPropertyByIdUsingGET_1
+      produces:
+        - '*/*'
+      parameters:
+        - name: propertyid
+          in: path
+          description: propertyid
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Property'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /property/propertybysellerid/{sellerid}:
+    get:
+      tags:
+        - property-rest-controller
+      summary: getPropertyBySellerId
+      operationId: getPropertyBySellerIdUsingGET_1
+      produces:
+        - '*/*'
+      parameters:
+        - name: sellerid
+          in: path
+          description: sellerid
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Property'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /property/updateproperty:
+    put:
+      tags:
+        - property-rest-controller
+      summary: updateProperty
+      operationId: updatePropertyUsingPUT_1
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: property
+          description: property
+          required: true
+          schema:
+            $ref: '#/definitions/Property'
+      responses:
+        '200':
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /property/wishlistbyid/{buyerid}:
+    get:
+      tags:
+        - property-rest-controller
+      summary: wishlistByBuyerId
+      operationId: wishlistByBuyerIdUsingGET_1
+      produces:
+        - '*/*'
+      parameters:
+        - name: buyerid
+          in: path
+          description: buyerid
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Property'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+definitions:
+  Buyer:
+    type: object
+    properties:
+      adhar:
+        type: string
+      buyerId:
+        type: integer
+        format: int32
+      customerId:
+        type: integer
+        format: int32
+      email:
+        type: string
+      fName:
+        type: string
+      lName:
+        type: string
+      pan:
+        type: string
+      password:
+        type: string
+      phoneNumber:
+        type: string
+      wishlist:
+        type: string
+    title: Buyer
+  Location:
+    type: object
+    properties:
+      latitude:
+        type: number
+        format: double
+      locationTitle:
+        type: string
+      longitude:
+        type: number
+        format: double
+    title: Location
+  LoginUser:
+    type: object
+    properties:
+      email:
+        type: string
+      id:
+        type: integer
+        format: int32
+      password:
+        type: string
+      user:
+        type: string
+    title: LoginUser
+  Property:
+    type: object
+    properties:
+      bhk:
+        type: integer
+        format: int32
+      contact:
+        type: integer
+        format: int32
+      description:
+        type: string
+      floor:
+        type: integer
+        format: int32
+      latitude:
+        type: number
+        format: double
+      longitude:
+        type: number
+        format: double
+      place:
+        type: string
+      price:
+        type: integer
+        format: int64
+      property_Id:
+        type: integer
+        format: int32
+      property_Type:
+        type: string
+      seller:
+        $ref: '#/definitions/Seller'
+      status:
+        type: boolean
+    title: Property
+  PurchaseOrder:
+    type: object
+    properties:
+      buyer:
+        $ref: '#/definitions/Buyer'
+      date:
+        type: string
+        format: date-time
+      maxAcceptedPrice:
+        type: integer
+        format: int64
+      property:
+        $ref: '#/definitions/Property'
+      purhcaseId:
+        type: integer
+        format: int32
+      seller:
+        $ref: '#/definitions/Seller'
+    title: PurchaseOrder
+  PurchaseOrderService:
+    type: object
+    properties:
+      purchaseOrderList:
+        type: array
+        items:
+          $ref: '#/definitions/PurchaseOrder'
+    title: PurchaseOrderService
+  Seller:
+    type: object
+    properties:
+      adhar:
+        type: string
+      customerId:
+        type: integer
+        format: int32
+      email:
+        type: string
+      fName:
+        type: string
+      lName:
+        type: string
+      pan:
+        type: string
+      password:
+        type: string
+      phoneNumber:
+        type: string
+      sellerId:
+        type: integer
+        format: int32
+    title: Seller
+schemes:
+  - https 
+  - http

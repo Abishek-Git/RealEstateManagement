@@ -1,0 +1,18 @@
+
+<br>
+<div style="padding-left:50px;" class="container card-column listing">
+    <div class="row">
+        <div *ngFor="let property of propertyList" class=" col-lg-6 mb-4 card " style="width: 22rem;">
+            <img style="height:300px;" class="card-img" src="/assets/images/{{property.property_Id}}.jpg" alt="{{1}}">
+            <div class="card-body">
+                <h5 class="card-title">{{property.place}}</h5>
+                <p class="card-text">{{property.description}}</p>
+                <p class="card-text muted">{{property.price}}&#8377;</p>
+                <div style="margin-bottom: 2px;" class="card-body">
+                <a (click)="redirect(property.property_Id)" class="btn btn-primary">View Property</a>
+                <a style="margin-left: 50px ;" (click)=addWish(property.property_Id)><img src={{mode}}/></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

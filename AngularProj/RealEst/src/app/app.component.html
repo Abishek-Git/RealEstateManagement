@@ -1,0 +1,71 @@
+<div *ngIf="show">
+<nav [style.background-color]="colorVal==1?'#1976D2' :'black'" class={{classValue}}>
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/home"
+    routerLinkActive="active"><strong>REMS&reg;</strong></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            routerLink="/home"
+            routerLinkActive="active"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item" *ngIf="isBuyer" ><a class="nav-link active" routerLink="/wishlist"
+          routerLinkActive="active" >DashBoard</a></li>
+
+        <li class="nav-item">
+          <a *ngIf="!isAdmin"
+            class="nav-link active"
+            aria-current="page"
+            routerLink="/contactus"
+            routerLinkActive="active"
+            >Contact Us</a
+          >
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            User
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li *ngIf="isAdmin" ><a class="dropdown-item" (click)="optionSelected1('admin')" >Admin Panel</a></li>
+            <li *ngIf="isBuyer" ><a class="dropdown-item" (click)="optionSelected2('buyer')" >Profile</a></li>
+            <li *ngIf="isSeller" ><a class="dropdown-item" (click)="optionSelected3('seller')" >My Property</a></li>
+            <li *ngIf="!isLogged" ><a class="dropdown-item" (click)="optionSelected4()" >Sign in</a></li>
+            <li *ngIf="isLogged"><hr class="dropdown-divider"></li>
+            <li *ngIf="isLogged"><a class="dropdown-item" (click)="goOut()">Log out</a></li>
+          </ul>
+        </li>
+      </ul>
+      <a style="margin-right: 10px ;" (click)=darkMode(mode)><img src={{mode}}/></a>
+       
+      <form class="d-flex">
+        <input
+          class="search form-control me-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+        <button class=" butt btn btn-dark" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+</div>
+<router-outlet></router-outlet>
+

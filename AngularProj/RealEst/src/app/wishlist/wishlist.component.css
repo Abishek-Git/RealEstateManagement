@@ -1,0 +1,86 @@
+.width-30 {
+  width: 20%;
+  border: 0ch;
+}
+.width-70 {
+  width: 80%;
+  padding: 10px;
+  
+}
+
+.dp {
+  max-width: 100px;
+  margin-left: 4%;
+}
+.hello {
+  visibility: hidden;
+  position: inherit;
+  width: auto;
+  top: 49px !important;
+  text-align: center !important;
+  height: 80px;
+}
+.names {
+  width: 30%;
+  position: inherit;
+  float: left;
+}
+
+@media (max-width: 750.98px) {
+  #bp-mob {
+    display: none !important;
+    background-color: aqua;
+  }
+  .names {
+    width: 200px !important;
+    
+    background-color: aqua;
+
+  }
+}
+
+@media (min-width: 750.98px) {
+  #bp-mob {
+    display: block;
+  }
+  @media (min-width: 900px) {
+    .hello {
+      visibility: visible !important;
+    }
+  }
+}
+
+*{
+  font-size: 17px;
+  font-weight: 500;
+  font-family: Roboto,Arial,sans-serif;
+  letter-spacing: 0;
+}
+ul{
+  width: 100%;
+}
+li{
+  margin-left: 0px !important;
+  padding: 0%;
+  padding: 15px 10px;
+  width: 100%;
+  list-style-type: none;
+  color: rgb(0, 0, 0);
+
+}
+
+li:hover{
+  width: 100%;
+  background-color: rgb(164, 188, 209);
+  color: black;
+}
+
+li i {
+  font-size: 1.5rem;
+  position: relative;
+  float: right;
+}
+
+.ico-hov:hover{
+  color: blue;
+}

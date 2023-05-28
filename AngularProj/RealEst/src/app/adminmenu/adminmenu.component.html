@@ -1,0 +1,243 @@
+<div class="container-fluid">
+  <!-- Small boxes (Stat box) -->
+  <div class="row">
+    <div class="col-lg-3 col-6">
+      <!-- small box -->
+      <div class="small-box bg-info">
+        <div class="inner">
+          <h3 style="color: black;">{{orderCount}}</h3>
+
+          <p>New Orders</p>
+        </div>
+        <div class="icon">
+          <i class="ion ion-bag"></i>
+        </div>
+        <a id="ordertrig" class="small-box-footer">View Order List &nbsp; <i style="color: black;"
+            class=" ion-android-send"></i></a>
+      </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-6">
+      <!-- small box -->
+      <div class="small-box bg-success">
+        <div class="inner">
+          <h3>{{buyerCount}}</h3>
+
+          <p>Buyer Count</p>
+        </div>
+        <div class="icon">
+          <i class="ion ion-stats-bars"></i>
+        </div>
+        <a id="buyertrig" class="small-box-footer">Buyer info &nbsp;<i style="color: black;"
+            class=" ion-android-send"></i></a>
+      </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-6">
+      <!-- small box -->
+      <div class="small-box bg-warning">
+        <div class="inner">
+          <h3>{{sellerCount}}</h3>
+
+          <p>Total Seller</p>
+        </div>
+        <div class="icon">
+          <i class="ion ion-person-add"></i>
+        </div>
+        <a id="sellertrig" class="small-box-footer">More info &nbsp; <i style="color: black;"
+            class=" ion-android-send"></i></a>
+      </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-6">
+      <!-- small box -->
+      <div class="small-box bg-danger">
+        <div class="inner">
+          <h3>{{propertyCount}}</h3>
+
+          <p>Property Registered</p>
+        </div>
+        <div class="icon">
+          <i class="ion ion-pie-graph"></i>
+        </div>
+        <a id="proptrig" class="small-box-footer">More info &nbsp;<i style="color: black;"
+            class=" ion-android-send"></i></a>
+      </div>
+    </div>
+    <!-- ./col -->
+  </div>
+
+
+  <!-- Tables  Buyer-->
+  <div id="buyert" class="container buyer">
+    <div class="input-group rounded">
+      <input type="text" class="form-control rounded"  name="property_Type" [(ngModel)]="fName" aria-describedby="search-addon"  (input)="searchBuyer()" placeholder="Enter Property Type" id="">
+    
+      <span class="input-group-text border-0" id="search-addon">
+        <i class="bi bi-search"></i>
+      </span>
+    </div>
+    <br>
+    <button routerLink="/createbuyer" routerLinkActive="router-link-active" class="btn btn-success">Create
+      Buyer</button>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th (click)="sort('buyerId')" scope="col">#<i class="sort-by"></i></th>
+          <th (click)="sort('fName')" scope="col">First<i class="sort-by"></i></th>
+          <th (click)="sort('lName')" scope="col">Last<i class="sort-by"></i></th>
+          <th scope="col">Phone</th>
+          <th (click)="sort('email')" scope="col">Email<i class="sort-by"></i></th>
+          <th scope="col">Aadhar</th>
+          <th scope="col">Action</th>
+
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let buyer of buyerList | orderBy: key : reverse">
+          <th scope="row">{{buyer.buyerId}}</th>
+          <td>{{buyer.fName}}</td>
+          <td>{{buyer.lName}}</td>
+          <td>{{buyer.phoneNumber}}</td>
+          <td>{{buyer.email}}</td>
+          <td>{{buyer.adhar}}</td>
+          <td><a routerLink='/editbuyer/{{buyer.buyerId}}' routerLinkActive="router-link-active"
+              class="btn btn-secondary">&nbsp; Edit &nbsp;</a></td>
+          <td><a (click)="deleteBuyer(buyer)" class="btn btn-danger">Delete</a></td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Tables  Seller-->
+  <div id="sellert" class="container seller">
+    <div class="input-group rounded">
+      <input type="text" class="form-control rounded"  name="property_Type" [(ngModel)]="fName" aria-describedby="search-addon"  (input)="searchSeller()" placeholder="Enter First Name" id="">
+    
+      <span class="input-group-text border-0" id="search-addon">
+        <i class="bi bi-search"></i>
+      </span>
+    </div>
+    <br>
+    <button routerLink="/admincreateseller" routerLinkActive="router-link-active" class="btn btn-success">Create
+      Seller</button>
+    <table class="table">
+      <thead>
+        <tr>
+          <th (click)="sort('sellerId')" scope="col">#<i class="sort-by"></i></th>
+          <th (click)="sort('fName')" scope="col">First<i class="sort-by"></i></th>
+          <th (click)="sort('lName')" scope="col">Last<i class="sort-by"></i></th>
+          <th scope="col">Phone</th>
+          <th (click)="sort('email')" scope="col">Email<i class="sort-by"></i></th>
+          <th scope="col">Aadhar</th>
+          <th scope="col">Action</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let seller of sellerList | orderBy: key : reverse">
+          <th scope="row">{{seller.sellerId}}</th>
+          <td>{{seller.fName}}</td>
+          <td>{{seller.lName}}</td>
+          <td>{{seller.phoneNumber}}</td>
+          <td>{{seller.email}}</td>
+          <td>{{seller.adhar}}</td>
+          <td><a style="text-decoration: none;" routerLink='/admineditseller/{{seller.sellerId}}' routerLinkActive="router-link-active"
+              class="btn btn-info">&nbsp; Edit &nbsp;</a></td>
+          <td> <button routerLink="/createpropertyadmin/{{seller.sellerId}}" routerLinkActive="router-link-active"
+              class="btn btn-success">Create Property</button>
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Tables  Property-->
+  <div id="propertyt" class="container property">
+    
+<div class="input-group rounded">
+  <input type="text" class="form-control rounded"  name="property_Type" [(ngModel)]="property_Type" aria-describedby="search-addon"  (input)="search()" placeholder="Enter Property Type" id="">
+
+  <span class="input-group-text border-0" id="search-addon">
+    <i class="bi bi-search"></i>
+  </span>
+</div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th (click)="sort('property_Id')"  scope="col">property_Id <i class="sort-by"></i></th>
+          <th (click)="sort('property_Type')"  scope="col">property_Type <i class="sort-by"></i> </th>
+          <th (click)="sort('price')"  scope="col">price  <i class="sort-by"></i> </th>
+          <th (click)="sort('status')" scope="col">status  <i class="sort-by"></i></th>
+          <th (click)="sort('floor')" scope="col">FLoor  <i class="sort-by"></i></th>
+          <th (click)="sort('bhk')" scope="col">BHK  <i class="sort-by"></i></th>
+          <th  scope="col">contact</th>
+          <th (click)="sort('seller')" scope="col">seller  <i class="sort-by"></i></th>
+          <th  scope="col">Action </th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let property of propertyList | orderBy: key : reverse">
+          <th scope="row">{{property.property_Id}}</th>
+          <td>{{property.property_Type}}</td>
+          <td>{{property.price}}</td>
+          <td>{{property.status}}</td>
+          <td>{{property.floor}}</td>
+          <td>{{property.bhk}}</td>
+          <td>{{property.contact}}</td>
+          <td>{{property.seller.sellerId}}</td>
+          <td> <button routerLink="/updatepropertyadmin/{{property.property_Id}}" routerLinkActive="router-link-active"
+              class="btn btn-success"> Edit </button></td>
+          <td> <button (click)="deleteProperty(property.property_Id)" class="btn btn-danger"> Delete </button>
+          </td>
+          
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div id="ordert" class="container order">
+    <div class="input-group rounded">
+      <input type="text" class="form-control rounded"  name="property_Type" [(ngModel)]="property_Type" aria-describedby="search-addon"  (input)="searchOrder()" placeholder="Enter Property Type" id="">
+    
+      <span class="input-group-text border-0" id="search-addon">
+        <i class="bi bi-search"></i>
+      </span>
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th (click)="sort('purhcaseId')" scope="col">purhcaseId <i class="sort-by"></i> </th>
+          <th (click)="sort('buyerId')" scope="col">buyer <i class="sort-by"></i> </th>
+          <th (click)="sort('maxAcceptedPrice')" scope="col">Price <i class="sort-by"></i> </th>
+          <th (click)="sort('date')" scope="col">date <i class="sort-by"></i> </th>
+          <th (click)="sort('property_Type')" scope="col">property <i class="sort-by"></i> </th>
+          <th (click)="sort('sellerId')" scope="col">sellerId <i class="sort-by"></i> </th>
+          <th scope="col">Action</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orderList | orderBy: key : reverse">
+          <th scope="row">{{order.purhcaseId}}</th>
+          <td>{{order.buyer.buyerId}}</td>
+          <td>{{order.maxAcceptedPrice}}</td>
+          <td>{{order.date | date : "shortDate"}}</td>
+          <td>{{order.property.property_Type}}</td>
+          <td>{{order.property.seller.sellerId}}</td>
+          <td> <button (click)="deleteOrder(order.purhcaseId)" class="btn btn-danger"> Delete </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<router-outlet></router-outlet>

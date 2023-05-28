@@ -1,0 +1,19 @@
+
+
+.container .card
+{
+  
+  position:relative ; 
+  max-width: 1550px; 
+  background: white;
+  margin: 5px;
+  padding: 10px;
+  display: flex;
+}
+
+.img{
+  margin-right: 20px;
+  width: 25rem;
+  align:left;
+}
+

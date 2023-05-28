@@ -1,0 +1,52 @@
+<div class="bootstrap-wrapper">
+    <div class="container box">
+        <div class="row" style="margin-top: 70px ;">
+            <div class="col-md-6 offset-md-3">
+                <mat-card class="matcard">
+                    <div class="container text-center">
+                        <img src="../../../assets/download.jpg">
+                    </div>
+
+                    <h1 class="text-center">Login Page</h1>
+                    <form (ngSubmit)="formSubmit()">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Email</mat-label>
+                            <input required [(ngModel)]="user.email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" matInput
+                                placeholder="Enter here" />
+                            <mat-hint>Enter Valid email !!!</mat-hint>
+                        </mat-form-field>
+
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>User Password</mat-label>
+                            <input type="password" required [(ngModel)]="user.password"  name="password" matInput
+                                placeholder="Enter here" />
+                                
+
+                        </mat-form-field>
+                        <p class="text-danger">{{msg}}</p>
+                        <div class="check">
+                            <input (click)="typeOfUser('buyer')" class="form-check-input" type="radio" name="IAmBuyer" id="IAmBuyer" value="buyer" [checked]="currentlyChecked === check_box_type.BUYER" (click)="selectCheckBox(check_box_type.BUYER)">
+                            <label class="form-check-label" for="IAmBuyer">
+                                I am Buyer.
+                            </label>
+                        </div>
+                        <div class="check">
+                            <input  (click)="typeOfUser('seller')" class="form-check-input" type="radio" name="IAmSeller" id="IAmSeller" value="seller" [checked]="currentlyChecked === check_box_type.SELLER" (click)="selectCheckBox(check_box_type.SELLER)">
+                            <label class="form-check-label" for="IAmSeller">
+                                I am Seller.
+                             </label>
+                        </div>
+
+                        <div class="container">
+                            <button style="margin-left: 120px" mat-raised-button color="primary"
+                                type="submit">Login</button>
+                            <button style="margin-left: 20px" mat-raised-button color="accent"
+                                type="submit">Reset</button>
+
+                        </div>
+                    </form>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,93 @@
+<div style="  background-color: #f1f3f6; height: 100vh;"><br>
+<div class="container-fluid p-4">
+    <div class="row">
+        <div style="box-sizing: border-box;  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 8%)" id="bp-mob"
+            class="card width-30 h-75 ms-lg-4 m-0 p-0 d-inline-block border-0">
+           
+            <div  class="names">
+                <img src="assets/images/download.png" class="rounded-circle dp" alt="...">
+            </div>
+            <div class="hello">Hello,
+                <p class="text-primary">{{buyerData.fName}}, {{buyerData.lName}}</p>
+
+            </div>
+            <br><br>
+            <div style="height: 20px; background-color: #f1f3f6;"></div>
+            <div style="background-color: rgb(255, 255, 255); padding: 0; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;"
+                class="card m-0">
+                <li (click)="toProfile(buyerData.buyerId)">Profile<i class="bi bi-person-fill"></i></li>
+                <li routerLink="/list" routerLinkActive="router-link-active"  >Property<i class="bi bi-bag-check"></i></li>
+                <li (click)="toProfileEdit(buyerData.buyerId)" >Edit Profile<i class="bi bi-person-video"></i></li>
+                <li routerLink="/home" routerLinkActive="router-link-active"  >Home<i class="bi bi-house-door"></i></li>
+                <li style="background-color: black; color: white;">DashBoard<i class="bi bi-heart"></i></li>
+
+            </div>
+
+        </div>
+
+        <div style="box-sizing: border-box;  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 8%)"
+            class="card col width-70 h-25 mx-4 me-lg-4 d-inline-block">
+            <div class="card-header text-black text-center"><span style="font-weight: bold !important;"> My
+                    WishList</span></div><br>
+                    <div class="text-center text-danger">{{wmsg}}</div>
+                   
+            <div *ngFor="let property of propertyData"  class="card mb-3 h-auto" style="max-width: auto;">
+                <div class="row g-0">
+                    <div class="col-md-3">
+
+                        <img style="width: 200px; height: 150px;" src="assets/images/{{property.property_Id}}.jpg"
+                            class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-9">
+                        <div class="card-body">
+                            <h4 class="card-title"><a routerLink="/list/{{property.property_Id}}" routerLinkActive="router-link-active"  >{{property.property_Type | uppercase}}</a></h4>
+                            <p class="card-text">{{property.description}}</p>
+                            <!-- <button class="btn btn-danger float-end">Delete</button> -->
+                            <!-- <button style="margin-right: 4px;" class="btn btn-outline-primary float-end">Move to Cart</button> -->
+                            <i *ngIf="property.status" routerLink="/cart/{{property.property_Id}}" routerLinkActive="router-link-active"   style="margin-right: 14px; font-size: 1.75em !important;" class="bi bi-cart4 float-end ico-hov"></i>
+                            <i (click)="wishDelete(property.property_Id)" style="margin-right: 30px; font-size: 1.75em;"
+                                class="bi bi-trash  float-end ico-hov"></i>
+                            <p class="card-text"><small class="text-muted"> &#x20B9;{{property.price}}</small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+              
+            </div>
+            <br>
+            <hr>
+            <br>
+            <div class="card-header text-black text-center"><span style="font-size: 1.15em !important;"> 
+                Your Order</span></div><br>
+                <div class="text-center text-success">{{omsg}}</div>
+                <div *ngFor="let order of orderData"  class="card mb-3 h-auto" style="max-width: auto;">
+                    <div class="row g-0">
+                        <div class="col-md-3">
+    
+                            <img style="width: 200px; height: 150px;" src="assets/images/{{order.property.property_Id}}.jpg"
+                                class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-9">
+                            <div class="card-body">
+                                <h3 class="card-title">{{order.property.property_Type}}</h3>
+                                <p class="card-text">{{order.property.description}}</p>
+                                <!-- <button class="btn btn-danger float-end">Delete</button> -->
+                                <!-- <button style="margin-right: 4px;" class="btn btn-outline-primary float-end">Move to Cart</button> -->
+                                <i  style="margin-right: 14px; font-size: 1.75em !important;" class="bi bi-cart4 float-end ico-hov"></i>
+                                <i (click)="orderDelete(order.purhcaseId)" style="margin-right: 30px; font-size: 1.75em;"
+                                    class="bi bi-trash  float-end ico-hov"></i>
+                                <p class="card-text"><small class="text-muted"> &#x20B9;{{order.property.price}}</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                  
+                </div>
+            <br>
+        </div>
+
+    </div>
+
+</div>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,11 @@
+.card{
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.listing{
+  background-color:#F4F5F2;
+  background-image: url(../../assets/images/pngegg.png);
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: bottom;
+}
