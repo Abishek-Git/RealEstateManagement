@@ -20,7 +20,6 @@ export class EditComponent implements OnInit {
     seller: {}
   };
 
-  propertyId: any = this.aroute.snapshot.params['id'];
 
   public sellerData: any = {
     customerId: 0,
@@ -44,9 +43,10 @@ export class EditComponent implements OnInit {
     private route: Router
   ) {}
 
+
   ngOnInit(): void {
     this.propertyService
-      .getPropertyById(this.propertyId)
+      .getPropertyById(this.aroute.snapshot.params['id'])
       .subscribe((data) => {
         this.propertyData = data;
         this.sellerService.getSellerById(this.propertyData.seller.sellerId).subscribe((data) => {

@@ -19,7 +19,7 @@ export class AdminEditpropertyComponent implements OnInit {
     seller: {}
   };
 
-  propertyId: any = this.aroute.snapshot.params['propertyid'];
+  propertyId: any;
 
   sellerData: any = {
     customerId: 0,
@@ -37,7 +37,8 @@ export class AdminEditpropertyComponent implements OnInit {
     private sellerService: CustomerService,
     private aroute: ActivatedRoute,
     private route: Router
-  ) {}
+  ) {  this.propertyId = this.aroute.snapshot.params['propertyid'];
+}
 
   ngOnInit(): void {
     this.propertyService

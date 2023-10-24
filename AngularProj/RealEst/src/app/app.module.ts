@@ -26,6 +26,7 @@ import { EditComponent } from './edit/edit.component';
 
 
 import { MatSliderModule } from '@angular/material/slider';
+import { FilterPipeModule } from 'ngx-filter-pipe';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -35,10 +36,8 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CartComponent } from './cart/cart.component';
 import { AddpropertyComponent } from './addproperty/addproperty.component';
-import { AgmCoreModule } from '@agm/core';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { Ng2OrderModule } from 'ng2-order-pipe';
-import { NgxPaginationModule } from 'ngx-pagination';
+//import { AgmCoreModule } from '@agm/core';
+import {NgPipesModule} from 'ngx-pipes';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { LoginpageComponent } from './loginpage/loginpage.component';
@@ -76,9 +75,6 @@ import { UpdatebuyerComponent } from './updatebuyer/updatebuyer.component';
     UpdatebuyerComponent,
   ],
   imports: [
-    Ng2SearchPipeModule,
-    Ng2OrderModule,
-    NgxPaginationModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -92,9 +88,11 @@ import { UpdatebuyerComponent } from './updatebuyer/updatebuyer.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     GooglePayButtonModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyA5hxPaX_6yYlTy_7tsQFVeqsGiCmoZwYU'
-    })
+    NgPipesModule
+    // ,
+    // AgmCoreModule.forRoot({
+    //   apiKey: 'AIzaSyA5hxPaX_6yYlTy_7tsQFVeqsGiCmoZwYU'
+    // })
   ],
   providers: [],
   bootstrap: [AppComponent]

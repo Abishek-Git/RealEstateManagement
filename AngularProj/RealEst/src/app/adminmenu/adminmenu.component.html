@@ -96,7 +96,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let buyer of buyerList | orderBy: key : reverse">
+        <tr *ngFor="let buyer of buyerList | orderBy: key | reverse">
           <th scope="row">{{buyer.buyerId}}</th>
           <td>{{buyer.fName}}</td>
           <td>{{buyer.lName}}</td>
@@ -138,7 +138,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let seller of sellerList | orderBy: key : reverse">
+        <tr *ngFor="let seller of sellerList | orderBy: key | reverse">
           <th scope="row">{{seller.sellerId}}</th>
           <td>{{seller.fName}}</td>
           <td>{{seller.lName}}</td>
@@ -183,7 +183,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let property of propertyList | orderBy: key : reverse">
+        <tr *ngFor="let property of propertyList | orderBy: key | reverse">
           <th scope="row">{{property.property_Id}}</th>
           <td>{{property.property_Type}}</td>
           <td>{{property.price}}</td>
@@ -224,7 +224,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let order of orderList | orderBy: key : reverse">
+        <tr *ngFor="let order of orderList | orderBy: key | reverse">
           <th scope="row">{{order.purhcaseId}}</th>
           <td>{{order.buyer.buyerId}}</td>
           <td>{{order.maxAcceptedPrice}}</td>

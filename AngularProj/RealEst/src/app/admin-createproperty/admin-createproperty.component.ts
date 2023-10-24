@@ -19,7 +19,6 @@ export class AdminCreatepropertyComponent implements OnInit {
     seller: {},
   };
 
-  sellerId: any = this.aroute.snapshot.params['sellerid'];
 
   sellerData: any = {
     customerId: 0,
@@ -32,12 +31,17 @@ export class AdminCreatepropertyComponent implements OnInit {
     adhar: '',
     password: '',
   };
+  sellerId: any;
+
   constructor(
     private propertyService: PropertyService,
     private aroute: ActivatedRoute,
     private sellerService: CustomerService,
     private route: Router
-  ) {}
+  ) {
+    this.sellerId = this.aroute.snapshot.params['sellerid'];
+
+  }
 
   ngOnInit(): void {
     this.sellerService.getSellerById(this.sellerId).subscribe((data) => {

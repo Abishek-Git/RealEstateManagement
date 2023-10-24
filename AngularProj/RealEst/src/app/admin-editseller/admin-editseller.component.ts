@@ -20,10 +20,13 @@ export class AdminEditsellerComponent implements OnInit {
     password: '',
   };
 
-  sellerId : any = this.aroute.snapshot.params['sellerid'];
+  sellerId : any;
 
 
-  constructor(private sellerService : CustomerService, private aroute : ActivatedRoute, private route:Router) { }
+  constructor(private sellerService : CustomerService, private aroute : ActivatedRoute, private route:Router) {
+    this.sellerId = this.aroute.snapshot.params['sellerid'];
+
+   }
 
   ngOnInit(): void {
     this.sellerService.getSellerById(this.sellerId).subscribe(data => this.sellerData = data)
