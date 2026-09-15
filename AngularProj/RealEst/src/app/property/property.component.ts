@@ -23,6 +23,16 @@ export class PropertyComponent implements OnInit {
   {
     return parseInt(val);
   }
+
+  galleryImage(offset: number): string {
+    const propertyId = Number(this.value);
+    if (!Number.isInteger(propertyId)) {
+      return 'assets/images/reg.jpg';
+    }
+    const imageId = (propertyId + offset) % 17;
+    return `assets/images/${imageId}.jpg`;
+  }
+
  ngOnInit(): void {
     
     this.propertyService

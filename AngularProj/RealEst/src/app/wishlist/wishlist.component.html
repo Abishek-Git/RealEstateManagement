@@ -35,8 +35,8 @@
                 <div class="row g-0">
                     <div class="col-md-3">
 
-                        <img style="width: 200px; height: 150px;" src="assets/images/{{property.property_Id}}.jpg"
-                            class="img-fluid rounded-start" alt="...">
+                        <img style="width: 200px; height: 150px; object-fit: cover;" [src]="imagePath(property.property_Id)"
+                            class="img-fluid rounded-start" [alt]="property.property_Type + ' property'">
                     </div>
                     <div class="col-md-9">
                         <div class="card-body">
@@ -64,8 +64,8 @@
                     <div class="row g-0">
                         <div class="col-md-3">
     
-                            <img style="width: 200px; height: 150px;" src="assets/images/{{order.property.property_Id}}.jpg"
-                                class="img-fluid rounded-start" alt="...">
+                            <img style="width: 200px; height: 150px; object-fit: cover;" [src]="imagePath(order.property.property_Id)"
+                                class="img-fluid rounded-start" [alt]="order.property.property_Type + ' property'">
                         </div>
                         <div class="col-md-9">
                             <div class="card-body">

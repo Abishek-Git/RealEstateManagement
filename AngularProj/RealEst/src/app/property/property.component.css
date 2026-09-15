@@ -118,3 +118,8 @@ agm-map {
 
 
 }
+
+.property-gallery-image {
+  height: 430px;
+  object-fit: cover;
+}

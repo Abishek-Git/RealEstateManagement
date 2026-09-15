@@ -36,9 +36,10 @@ bower_components
 
 # Compiled binary addons (https://nodejs.org/api/addons.html)
 build/Release
+**/target/
 
 # Dependency directories
-node_modules/
+**/node_modules/
 jspm_packages/
 
 # TypeScript v1 declaration files
@@ -80,7 +81,10 @@ typings/
 
 # Nuxt.js build / generate output
 .nuxt
-dist
+**/dist/
+
+# Angular CLI cache
+**/.angular/
 
 # Gatsby files
 .cache/
