@@ -65,14 +65,14 @@
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img style="border-radius: 5% ;width: fit-content;" src="../../assets/images/{{value}}.jpg"
-              class="d-block w-100" alt="...">
+            <img style="border-radius: 5% ;" [src]="galleryImage(0)"
+              class="d-block w-100 property-gallery-image" alt="Property exterior view">
           </div>
           <div class="carousel-item">
-            <img style="border-radius: 5% ;" src="../../assets/images/{{value}}.jpg" class="d-block w-100" alt="...">
+            <img style="border-radius: 5% ;" [src]="galleryImage(1)" class="d-block w-100 property-gallery-image" alt="Property interior view">
           </div>
           <div class="carousel-item">
-            <img style="border-radius: 5% ;" src="../../assets/images/{{value}}.jpg" class="d-block w-100" alt="...">
+            <img style="border-radius: 5% ;" [src]="galleryImage(2)" class="d-block w-100 property-gallery-image" alt="Property neighborhood view">
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"

@@ -75,4 +75,11 @@ export class WishlistComponent implements OnInit {
     this.orderService.deleteOrder(Id).subscribe();
     window.location.reload();
   }
+
+  imagePath(propertyId: number): string {
+    const id = Number(propertyId);
+    return Number.isInteger(id) && id >= 0 && id <= 16
+      ? `assets/images/${id}.jpg`
+      : 'assets/images/reg.jpg';
+  }
 }
