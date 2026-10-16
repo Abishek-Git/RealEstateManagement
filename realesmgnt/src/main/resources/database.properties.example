@@ -1,0 +1,11 @@
+# Copy this file to database.properties and set your own values.
+# database.properties is gitignored so real credentials are never committed.
+
+database.driver=oracle.jdbc.driver.OracleDriver
+database.url=jdbc:oracle:thin:@localhost:1521/XE
+database.username=your_db_username
+database.password=your_db_password
+
+hibernate.dialect=org.hibernate.dialect.OracleDialect
+hibernate.hbm2ddl.auto=update
+hibernate.show_sql=true
