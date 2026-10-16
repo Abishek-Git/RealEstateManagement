@@ -11,13 +11,13 @@ export class AppComponent {
   public show = true;
   public set = 1;
   public colorVal = 1;
-  public classValue = 'navbar navbar-expand-lg navbar-light';
+  public classValue = 'navbar navbar-expand-lg navbar-dark';
   public mode1 =
     'https://img.icons8.com/external-bearicons-glyph-bearicons/32/000000/external-moon-halloween-bearicons-glyph-bearicons.png';
   public mode2 =
     'https://img.icons8.com/external-bearicons-blue-bearicons/32/000000/external-moon-halloween-bearicons-blue-bearicons.png';
   mode = this.mode1;
-  title = 'REM';
+  title = 'HomeNest';
   public var!: String[];
 
   fire(data: any) {
@@ -35,7 +35,7 @@ export class AppComponent {
     } else {
       this.mode = this.mode1;
       this.colorVal = 1;
-      this.classValue = 'navbar navbar-expand-lg navbar-light';
+      this.classValue = 'navbar navbar-expand-lg navbar-dark';
     }
   }
   optionSelected1(value: String) {
@@ -76,7 +76,7 @@ export class AppComponent {
     this.authUser = JSON.parse(this.authUser);
     this.isLogged = this.authUser != null;
     if(this.authUser != null){
-      this.isBuyer = (this.authUser.user == 'buyer')|| (this.authUser != null); 
+      this.isBuyer = this.authUser.user == 'buyer';
       this.isSeller = this.authUser.user == 'seller';
       this.isAdmin = this.authUser.user == 'admin';
     }

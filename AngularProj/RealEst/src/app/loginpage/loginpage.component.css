@@ -37,3 +37,29 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
+.demo-hint {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 16px;
+  padding: 12px 14px;
+  background: #eef4ff;
+  border: 1px solid #cfe0ff;
+  border-radius: 10px;
+  font-size: 0.82rem;
+  color: #334155;
+  text-align: left;
+}
+
+.demo-hint strong {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #1d4ed8;
+}
+
+.demo-hint small {
+  margin-top: 2px;
+  color: #64748b;
+}

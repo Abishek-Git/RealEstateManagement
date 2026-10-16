@@ -17,10 +17,10 @@
         <ul class="list-group mb-3">
           <li class="list-group-item d-flex justify-content-between lh-sm">
             <div>
-              <h4 class="my-0">{{propertyData.property_Type | uppercase}}</h4>
-              <small class="text-muted">{{propertyData.place}}</small>
+              <h4 class="my-0">{{propertyData?.property_Type | uppercase}}</h4>
+              <small class="text-muted">{{propertyData?.place}}</small>
             </div>
-            <span class="text-muted"> &#8377;{{propertyData.price}}</span>
+            <span class="text-muted"> &#8377;{{propertyData?.price | number}}</span>
           </li>
           <li class="list-group-item d-flex justify-content-between bg-light">
             <div class="text-success">
@@ -31,7 +31,7 @@
           </li>
           <li class="list-group-item d-flex justify-content-between">
             <span>Total (INR)</span>
-            <strong> &#8377;{{propertyData.price}}</strong>
+            <strong> &#8377;{{propertyData?.price | number}}</strong>
           </li>
         </ul>
 
@@ -94,7 +94,7 @@
             <div class="col-md-4">
               <label for="state" class="form-label">State</label>
               <select disabled class="form-select" id="state" required>
-                <option>Bangalore</option>
+                <option>Tamil Nadu</option>
               </select>
               <div class="invalid-feedback">
                 Please provide a valid state.
@@ -126,7 +126,7 @@
   </main>
 
   <footer class="my-5 pt-5 text-muted text-center text-small">
-    <p class="mb-1">&copy; 2017–2021 Company Name</p>
+    <p class="mb-1">&copy; 2026 HomeNest &mdash; Find your next home</p>
     <ul class="list-inline">
       <li class="list-inline-item"><a href="#">Privacy</a></li>
       <li class="list-inline-item"><a href="#">Terms</a></li>

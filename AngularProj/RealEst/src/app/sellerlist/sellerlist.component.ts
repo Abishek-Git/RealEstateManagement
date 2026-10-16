@@ -45,4 +45,11 @@ export class SellerlistComponent implements OnInit {
     this.propertyService.deleteProperty(property_Id).subscribe(data=> this.ngOnInit());
     
   }
+
+  imagePath(propertyId: number): string {
+    const id = Number(propertyId);
+    return Number.isInteger(id) && id >= 1 && id <= 12
+      ? `assets/images/listing-${id}.jpg`
+      : 'assets/images/reg.jpg';
+  }
 }

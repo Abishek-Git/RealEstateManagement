@@ -19,6 +19,7 @@ export class CartComponent implements OnInit {
   authUser: any = {};
   sdata: any;
   ngOnInit(): void {
+    this.propertyId = this.aroute.snapshot.params['propertyid'];
     this.authUser = sessionStorage.getItem('authUser');
     this.authUser = JSON.parse(this.authUser);
     this.buyerService.getBuyerById(this.authUser.id).subscribe((data)=> {
@@ -97,7 +98,7 @@ export class CartComponent implements OnInit {
     console.error('error', event.error);
   };
 
-  propertyId = this.aroute.snapshot.params['propertyid'];
+  propertyId : any;
 
   createOrder(){
     this.orderService.createOrder(this.propertyId, this.authUser.id).subscribe(data=>

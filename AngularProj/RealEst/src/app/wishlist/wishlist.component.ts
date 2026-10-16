@@ -78,8 +78,8 @@ export class WishlistComponent implements OnInit {
 
   imagePath(propertyId: number): string {
     const id = Number(propertyId);
-    return Number.isInteger(id) && id >= 0 && id <= 16
-      ? `assets/images/${id}.jpg`
+    return Number.isInteger(id) && id >= 1 && id <= 12
+      ? `assets/images/listing-${id}.jpg`
       : 'assets/images/reg.jpg';
   }
 }

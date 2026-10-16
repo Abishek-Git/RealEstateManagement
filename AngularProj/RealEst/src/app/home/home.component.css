@@ -47,6 +47,7 @@ body {
 /* Declare heights because of positioning of img element */
 .carousel-item {
   height: 32rem;
+  background-color: #0f172a;
 }
 .carousel-item > img {
   position: absolute;
@@ -62,17 +63,18 @@ body {
 .carousel-item::after {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(8, 20, 39, .7), rgba(8, 20, 39, .16));
+  background: linear-gradient(90deg, rgba(8, 20, 39, .85), rgba(8, 20, 39, .45) 55%, rgba(8, 20, 39, .25));
   content: '';
 }
 
 #hei{
-  font-size: 50px;
-    line-height: 1.0625;
-    font-weight: 600;
-    letter-spacing: -.009em;
-    text-shadow: #000000 1px 1px 2px;
-    font-family: "SF Pro Display","SF Pro Icons","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: clamp(30px, 5vw, 54px);
+  line-height: 1.12;
+  font-weight: 700;
+  letter-spacing: -.01em;
+  color: #ffffff;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, .55);
+  font-family: 'Poppins', 'Inter', sans-serif;
 }
 /* MARKETING CONTENT
 -------------------------------------------------- */

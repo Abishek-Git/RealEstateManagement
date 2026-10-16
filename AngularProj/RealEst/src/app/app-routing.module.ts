@@ -41,8 +41,7 @@ const routes: Routes = [
   { path: 'customer', component: CustomerRedirectComponent },
   { path: 'customer/Buyer', component: BuyerComponent },
   { path: 'customer/Seller', component: SellerComponent },
-  { path: 'list', component: PropertyListingComponent,canActivate: [AdminGuardGuard],
-  data: { Role: 'buyer' || 'seller' } },
+  { path: 'list', component: PropertyListingComponent },
   { path: 'list/:id', component: PropertyComponent },
   { path: 'contactus', component: ContactusComponent },
   {

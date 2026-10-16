@@ -10,7 +10,7 @@
   <div class="container">
     <div *ngFor="let property of propertyData " class="card sellcard">
       <div class="imgbx">
-        <img class="img" src="../../assets/images/back.jpg" alt="Card image cap" align="left">
+        <img class="img" [src]="imagePath(property.property_Id)" [alt]="property.place" align="left">
         <br />
 
         <div style="text-align: left;">
@@ -20,8 +20,8 @@
             <h3>{{property.price}}</h3>
             <a  (click)="redirect(property.property_Id)" class="btn btn-primary">Edit</a>&nbsp; -->
             <h3>{{property.property_Type}}</h3>
-              <p class="c">{{property.location}} <span style="word-spacing: 1cm;"><img style="margin-right: 5px;" src="https://img.icons8.com/material-rounded/20/000000/bed.png"/>{{propertyData.bhk}}BHK'S</span></p>
-              <h3 class="d">{{property.price}}<span><img src="https://img.icons8.com/ios-glyphs/20/000000/building--v1.png"/>{{propertyData.floor}}FLOOR'S</span></h3>
+              <p class="c">{{property.place}} <span style="word-spacing: 1cm;"><img style="margin-right: 5px;" src="https://img.icons8.com/material-rounded/20/000000/bed.png"/>{{property.bhk}} BHK</span></p>
+              <h3 class="d">&#8377;{{property.price | number}}<span style="margin-left: 12px;"><img style="margin-right: 4px;" src="https://img.icons8.com/ios-glyphs/20/000000/building--v1.png"/>{{property.floor}} Floor</span></h3>
               <a  (click)="redirect(property.property_Id)" class="btn btn-outline-success">Edit</a>&nbsp;&nbsp;
               <a (click)="Delete(property.property_Id)"type="button" class="btn btn-outline-danger">Delete</a>
           </div>

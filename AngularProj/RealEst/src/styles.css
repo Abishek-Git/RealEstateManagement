@@ -1,12 +1,52 @@
 /* You can add global styles to this file, and also import other style files */
 @import "bootstrap/dist/css/bootstrap.css";
 @import "~bootstrap-icons/font/bootstrap-icons.css";
-.search{
-    border-radius: 18px;
-}
-.butt{
-    border-radius: 18px;
+:root {
+    --brand: #1d4ed8;
+    --brand-600: #2563eb;
+    --brand-700: #1e40af;
+    --navy: #0f172a;
+    --accent: #f59e0b;
+    --ink: #111827;
+    --muted: #6b7280;
+    --bg: #f8fafc;
+    --border: #e5e7eb;
 }
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+    margin: 0;
+    font-family: 'Inter', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    color: var(--ink);
+    background-color: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, .navbar-brand {
+    font-family: 'Poppins', 'Inter', sans-serif;
+}
+
+/* Search + nav polish */
+.search { border-radius: 999px; }
+.butt { border-radius: 999px; }
+.navbar { box-shadow: 0 2px 16px rgba(2, 6, 23, .14); padding-top: .55rem; padding-bottom: .55rem; }
+.navbar-brand strong { letter-spacing: .4px; font-weight: 700; font-size: 1.35rem; }
+.navbar .nav-link { font-weight: 500; }
+
+/* Buttons - softer, modern */
+.btn { border-radius: 10px; font-weight: 600; }
+.btn-lg { border-radius: 12px; }
+.btn-primary { background-color: var(--brand); border-color: var(--brand); }
+.btn-primary:hover, .btn-primary:focus { background-color: var(--brand-700); border-color: var(--brand-700); }
+.btn-outline-primary { color: var(--brand); border-color: var(--brand); }
+.btn-outline-primary:hover { background-color: var(--brand); border-color: var(--brand); color: #fff; }
+
+/* Links */
+a { color: var(--brand); text-decoration: none; }
+a:hover { color: var(--brand-700); }
+
+/* Form controls */
+.form-control, .form-select { border-radius: 10px; }
+.form-control:focus, .form-select:focus { border-color: var(--brand-600); box-shadow: 0 0 0 .2rem rgba(37, 99, 235, .15); }

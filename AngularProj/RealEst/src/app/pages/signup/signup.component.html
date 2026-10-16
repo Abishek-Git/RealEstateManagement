@@ -120,33 +120,28 @@
                 </div>
                 <div class="row justify-content-between text-left">
                     <div class="form-group col-sm-6 flex-column d-flex"> <label
-                            class="form-control-label px-3">PAssword<span class="text-danger"> *</span></label> <input
-                            class="design" type="text" id="password" title="8 character, Upper and Lower case" required   [(ngModel)]="accData.password" placeholder="">
+                            class="form-control-label px-3">Password<span class="text-danger"> *</span></label> <input
+                            class="design" type="password" id="password" title="8 character, Upper and Lower case" required   [(ngModel)]="accData.password" placeholder="Create a strong password">
                             <span style="color: red;" class="text-danger" id="result"></span>
                         </div>
-                            <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Enter
-                            valid
-                            custmer No<span class="text-danger"> *</span></label> <input class="design" type="text"
-                            id="aadhar" [(ngModel)]="accData.customerId" placeholder=""> </div>
+                    <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">I want to<span class="text-danger"> *</span></label>
+                        <div class="d-flex gap-4 px-3 pt-2">
+                            <div class="form-check">
+                                <input (click)="typeOfUser('buyer')" class="form-check-input" type="radio" name="IAmBuyer" id="IAmBuyer" value="buyer" [checked]="currentlyChecked === check_box_type.BUYER" (click)="selectCheckBox(check_box_type.BUYER)">
+                                <label class="form-check-label" for="IAmBuyer">Buy a property</label>
+                            </div>
+                            <div class="form-check">
+                                <input (click)="typeOfUser('seller')" class="form-check-input" type="radio" name="IAmSeller" id="IAmSeller" value="seller" [checked]="currentlyChecked === check_box_type.SELLER" (click)="selectCheckBox(check_box_type.SELLER)">
+                                <label class="form-check-label" for="IAmSeller">Sell a property</label>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="text-danger">{{errmsg}}</div>
-                <div class="row justify-content-end">
+                <div class="row justify-content-center">
                     <div class="form-group col-sm-6"> <button type="submit" (click)="createAccount()"
-                            class="btn-block btn-primary">Create account
+                            class="btn-block btn-primary w-100">Create account
                         </button> </div>
-                </div>
-
-                <div class="check">
-                    <input (click)="typeOfUser('buyer')" class="form-check-input" type="radio" name="IAmBuyer" id="IAmBuyer" value="buyer" [checked]="currentlyChecked === check_box_type.BUYER" (click)="selectCheckBox(check_box_type.BUYER)">
-                    <label class="form-check-label" for="IAmBuyer">
-                        I am Buyer.
-                    </label>
-                </div>
-                <div class="check">
-                    <input  (click)="typeOfUser('seller')" class="form-check-input" type="radio" name="IAmSeller" id="IAmSeller" value="seller" [checked]="currentlyChecked === check_box_type.SELLER" (click)="selectCheckBox(check_box_type.SELLER)">
-                    <label class="form-check-label" for="IAmSeller">
-                        I am Seller.
-                     </label>
                 </div>
             </div>
         </div>

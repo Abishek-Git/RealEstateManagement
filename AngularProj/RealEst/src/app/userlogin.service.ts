@@ -1,9 +1,11 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { IBuyer } from './IBuyer';
 import { IUser } from './IUser';
+import { demoLogin } from './seed/seed-data';
 
 @Injectable({
   providedIn: 'root'
@@ -19,11 +21,20 @@ export class UserloginService {
   }
 
   loginBuyer(buyer : any):Observable<IUser>{
-    return this.http.post<IUser>(this.restUrl+"/blogin", buyer,this.httpOptions );
-
+    return this.http.post<IUser>(this.restUrl+"/blogin", buyer,this.httpOptions ).pipe(
+      catchError(err => {
+        const demo = demoLogin('buyer', buyer.email, buyer.password);
+        return demo ? of(demo) : throwError(() => err);
+      })
+    );
   }
   loginSeller(seller : any):Observable<IUser>{
-    return this.http.post<IUser>(this.restUrl+"/slogin", JSON.stringify(seller),this.httpOptions );
+    return this.http.post<IUser>(this.restUrl+"/slogin", JSON.stringify(seller),this.httpOptions ).pipe(
+      catchError(err => {
+        const demo = demoLogin('seller', seller.email, seller.password);
+        return demo ? of(demo) : throwError(() => err);
+      })
+    );
   }
 
   logout(){
@@ -32,7 +43,12 @@ export class UserloginService {
   }
 
   loginAdmin(admin : any):Observable<IUser>{
-    return this.http.post<IUser>(this.restUrl+"/adminlogin", JSON.stringify(admin), this.httpOptions);
+    return this.http.post<IUser>(this.restUrl+"/adminlogin", JSON.stringify(admin), this.httpOptions).pipe(
+      catchError(err => {
+        const demo = demoLogin('admin', admin.email, admin.password);
+        return demo ? of(demo) : throwError(() => err);
+      })
+    );
   }
 
 }

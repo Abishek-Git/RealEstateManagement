@@ -1,18 +1,38 @@
 
-<br>
-<div style="padding-left:50px;" class="container card-column listing">
-    <div class="row">
-        <div *ngFor="let property of propertyList" class=" col-lg-6 mb-4 card " style="width: 22rem;">
-            <img style="height:300px; object-fit:cover;" class="card-img" [src]="imagePath(property.property_Id)" [alt]="property.place + ' property'">
-            <div class="card-body">
-                <h5 class="card-title">{{property.place}}</h5>
-                <p class="card-text">{{property.description}}</p>
-                <p class="card-text muted">{{property.price}}&#8377;</p>
-                <div style="margin-bottom: 2px;" class="card-body">
-                <a (click)="redirect(property.property_Id)" class="btn btn-primary">View Property</a>
-                <a style="margin-left: 50px ;" (click)=addWish(property.property_Id)><img src={{mode}}/></a>
-                </div>
+<section class="listing">
+  <div class="container listing-wrap">
+    <header class="listing-head">
+      <h1>Explore Properties</h1>
+      <p>Handpicked homes, villas and plots across India &mdash; find a place that fits your life and your budget.</p>
+    </header>
+
+    <div class="row g-4">
+      <div *ngFor="let property of propertyList" class="col-12 col-sm-6 col-lg-4">
+        <article class="property-card">
+          <div class="property-media">
+            <img [src]="imagePath(property.property_Id)" [alt]="property.place + ' property'">
+            <span class="property-type">{{ property.property_Type }}</span>
+            <span class="property-status" [class.sold]="!property.status">{{ property.status ? 'Available' : 'Sold' }}</span>
+          </div>
+          <div class="property-body">
+            <h2 class="property-place">{{ property.place }}</h2>
+            <p class="property-desc">{{ property.description }}</p>
+            <ul class="property-meta" *ngIf="property.bhk">
+              <li><i class="bi bi-door-open"></i>{{ property.bhk }} BHK</li>
+              <li><i class="bi bi-building"></i>Floor {{ property.floor }}</li>
+            </ul>
+            <div class="property-foot">
+              <span class="property-price">&#8377;{{ property.price | number }}</span>
+              <div class="property-actions">
+                <button type="button" class="btn btn-primary btn-sm" (click)="redirect(property.property_Id)">View</button>
+                <button type="button" class="btn btn-outline-danger btn-sm" title="Add to wishlist" (click)="addWish(property.property_Id)">
+                  <i class="bi bi-heart"></i>
+                </button>
+              </div>
             </div>
-        </div>
+          </div>
+        </article>
+      </div>
     </div>
-</div>
+  </div>
+</section>

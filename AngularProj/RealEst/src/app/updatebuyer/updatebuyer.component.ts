@@ -26,9 +26,10 @@ export class UpdatebuyerComponent implements OnInit {
   }
   constructor(private buyerService : CustomerService, private aroute : ActivatedRoute, private route:Router) { }
 
-  buyerId : any = this.aroute.snapshot.params['buyer'];
+  buyerId : any;
 
   ngOnInit(): void {
+    this.buyerId = this.aroute.snapshot.params['buyer'];
     this.buyerService.getBuyerById(this.buyerId).subscribe(data => this.buyerData = data)
   }
 

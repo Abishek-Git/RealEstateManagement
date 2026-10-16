@@ -47,7 +47,7 @@
                             <i *ngIf="property.status" routerLink="/cart/{{property.property_Id}}" routerLinkActive="router-link-active"   style="margin-right: 14px; font-size: 1.75em !important;" class="bi bi-cart4 float-end ico-hov"></i>
                             <i (click)="wishDelete(property.property_Id)" style="margin-right: 30px; font-size: 1.75em;"
                                 class="bi bi-trash  float-end ico-hov"></i>
-                            <p class="card-text"><small class="text-muted"> &#x20B9;{{property.price}}</small>
+                            <p class="card-text"><small class="text-muted"> &#x20B9;{{property.price | number}}</small>
                             </p>
                         </div>
                     </div>
@@ -76,7 +76,7 @@
                                 <i  style="margin-right: 14px; font-size: 1.75em !important;" class="bi bi-cart4 float-end ico-hov"></i>
                                 <i (click)="orderDelete(order.purhcaseId)" style="margin-right: 30px; font-size: 1.75em;"
                                     class="bi bi-trash  float-end ico-hov"></i>
-                                <p class="card-text"><small class="text-muted"> &#x20B9;{{order.property.price}}</small>
+                                <p class="card-text"><small class="text-muted"> &#x20B9;{{order.property.price | number}}</small>
                                 </p>
                             </div>
                         </div>

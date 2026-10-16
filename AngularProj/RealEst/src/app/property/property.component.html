@@ -107,7 +107,7 @@
           <a href="mailto:arun@gmail.com" class="stretched-link">Send</a>
         </div>
         <div class="col-auto d-none d-lg-block">
-          <img class="bd-placeholder-img" width="200" height="250" src="assets/images/{{propertyData.property_Id}}.jpg" role="img"/>
+          <img class="bd-placeholder-img" width="200" height="250" [src]="galleryImage(0)" role="img"/>
             <title>Placeholder</title>
 
         </div>
@@ -158,30 +158,27 @@
           </div> -->
         </div>
         <hr>
-        <p>This is some additional paragraph placeholder content. It has been written to fill the available space and
-          show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the
-          demonstration flowing, so be on the lookout for this exact same string of text.</p>
-        <h2>Blockquotes</h2>
-        <p>This is an example blockquote in action:</p>
+        <p>This home has been thoughtfully designed for comfortable, modern living. Generous natural light,
+          efficient ventilation and quality finishes come together to create spaces that feel both practical and
+          welcoming for the whole family.</p>
+        <h2>Why you'll love it</h2>
         <blockquote class="blockquote">
-          <p>Quoted text goes here.</p>
+          <p>"A well-connected neighbourhood with everyday conveniences just minutes from your doorstep."</p>
         </blockquote>
-        <p>This is some additional paragraph placeholder content. It has been written to fill the available space and
-          show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the
-          demonstration flowing, so be on the lookout for this exact same string of text.</p>
-        <h3>Example lists</h3>
-        <p>This is some additional paragraph placeholder content. It's a slightly shorter version of the other highly
-          repetitive body text used throughout. This is an example unordered list:</p>
+        <p>From the first viewing to the final paperwork, our listing team keeps the process transparent so you
+          always know exactly what comes next.</p>
+        <h3>Highlights</h3>
+        <p>A few of the features that make this property stand out:</p>
         <ul>
-          <li>First list item</li>
-          <li>Second list item with a longer description</li>
-          <li>Third list item to close it out</li>
+          <li>Spacious, Vaastu-conscious layout with cross ventilation</li>
+          <li>Gated community with 24x7 security and power backup</li>
+          <li>Close to schools, hospitals, metro and shopping</li>
         </ul>
-        <p>And this is an ordered list:</p>
+        <p>What is included with your purchase:</p>
         <ol>
-          <li>First list item</li>
-          <li>Second list item with a longer description</li>
-          <li>Third list item to close it out</li>
+          <li>Covered car parking and dedicated visitor parking</li>
+          <li>Clubhouse, gym and landscaped green spaces</li>
+          <li>Clear title with complete documentation support</li>
         </ol>
       </article>
     </div>
@@ -189,11 +186,10 @@
     <div  class="col-md-4">
       <div class="position-sticky" style="top: 2rem;">
         <div class="p-4 mb-3 bg-secondary rounded">
-          <h4  *ngIf="isBuyer && propertyData.status" class="fst-italic">Add to cart</h4>
+          <h4  *ngIf="canBuy && propertyData.status" class="fst-italic">Interested in this property?</h4>
           <p style="font-size: 30px;text-shadow: black 1px 1px;" class="text-dark text-uppercase text-center"  *ngIf="!propertyData.status"> Already Sold</p>
-          <p  *ngIf="isBuyer && propertyData.status" class="mb-0">Buy the Property now!</p>
-          <span  *ngIf="isBuyer && propertyData.status" (click)=addToCart()>click <img
-              src="https://img.icons8.com/external-icongeek26-linear-colour-icongeek26/52/000000/external-cart-essentials-icongeek26-linear-colour-icongeek26.png" /></span>
+          <p  *ngIf="canBuy && propertyData.status" class="mb-2">Add it to your cart and proceed to buy.</p>
+          <button type="button" *ngIf="canBuy && propertyData.status" class="btn btn-primary w-100" (click)="addToCart()">Buy now</button>
         </div>
       </div>
     </div>
@@ -201,8 +197,7 @@
 </main>
 
 <footer class="blog-footer">
-  <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a
-      href="https://twitter.com/mdo">@mdo</a>.</p>
+  <p>HomeNest &mdash; find, compare and buy your next home with confidence.</p>
   <p>
     <a href="#">Back to top</a>
   </p>

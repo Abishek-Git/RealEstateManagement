@@ -1,8 +1,8 @@
 <div *ngIf="show">
-<nav [style.background-color]="colorVal==1?'#1976D2' :'black'" class={{classValue}}>
+<nav [style.background-color]="colorVal==1?'#1d4ed8' :'#0f172a'" class={{classValue}}>
   <div class="container-fluid">
     <a class="navbar-brand" routerLink="/home"
-    routerLinkActive="active"><strong>REMS&reg;</strong></a>
+    routerLinkActive="active"><strong>HomeNest</strong></a>
     <button
       class="navbar-toggler"
       type="button"
@@ -24,6 +24,9 @@
             routerLinkActive="active"
             >Home</a
           >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="/list" routerLinkActive="active">Properties</a>
         </li>
         <li class="nav-item" *ngIf="isBuyer" ><a class="nav-link active" routerLink="/wishlist"
           routerLinkActive="active" >DashBoard</a></li>

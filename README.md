@@ -1,14 +1,18 @@
-# Real Estate Management System
+# HomeNest — Real Estate Marketplace
 
-REMS is a full-stack real estate management application. The Angular single-page application provides buyer, seller, property, and purchase-order workflows. The Java backend exposes the REST API and persists data in Oracle through Spring MVC and Hibernate.
+HomeNest is a full-stack real estate application where buyers browse and purchase properties and sellers list them. The Angular single-page app provides buyer, seller, and admin workflows (listings, wishlist, checkout, and dashboards); the Java backend exposes the REST API and persists data in Oracle through Spring MVC and Hibernate.
+
+The frontend ships with a built-in **demo mode**: each data service falls back to bundled seed data when the backend is unavailable, so the app is fully browsable with no database or server running. This also makes the frontend deployable as a static site (for example, Firebase Hosting).
 
 ## Contents
 
 - [Architecture](#architecture)
+- [Demo Mode](#demo-mode)
 - [Prerequisites](#prerequisites)
 - [Configuration](#configuration)
 - [Run Locally](#run-locally)
 - [Build and Test](#build-and-test)
+- [Deploy to Firebase Hosting](#deploy-to-firebase-hosting)
 - [API](#api)
 - [Project Layout](#project-layout)
 - [Troubleshooting](#troubleshooting)
@@ -21,7 +25,22 @@ REMS is a full-stack real estate management application. The Angular single-page
 | REST API | Spring MVC 5.1, Hibernate 5 | `realesmgnt` | `http://localhost:8080/realesmgnt` |
 | Database | Oracle XE/Oracle Database via JDBC | External service | `localhost:1521/XE` |
 
-The backend is a traditional Maven WAR application. It is not a Spring Boot executable JAR, so it must be deployed to a servlet container such as Tomcat. The frontend currently uses fixed `http://localhost:8080` API URLs in its services.
+The backend is a traditional Maven WAR application. It is not a Spring Boot executable JAR, so it must be deployed to a servlet container such as Tomcat. The frontend uses fixed `http://localhost:8080` API URLs in its services, with an automatic seed-data fallback (see [Demo Mode](#demo-mode)).
+
+## Demo Mode
+
+The app runs end-to-end without the backend or Oracle. When an API call fails, the Angular services return bundled **seed data** ([`AngularProj/RealEst/src/app/seed/seed-data.ts`](AngularProj/RealEst/src/app/seed/seed-data.ts)) — sample properties, sellers, buyers, orders, and demo accounts — so listings, property details, wishlist, cart, and the admin dashboard all populate.
+
+- **Browse freely:** the home and property pages are public. Signing in is only required to buy, save to a wishlist, or list a property.
+- **Demo logins** (work offline):
+
+  | Role | Email | Password |
+  | --- | --- | --- |
+  | Buyer | `demo@buyer.com` | `demo123` |
+  | Seller | `demo@seller.com` | `demo123` |
+  | Admin | `admin@mail.com` | `admin` |
+
+When a real backend is reachable at `http://localhost:8080/realesmgnt`, the same services use live data instead of the seed data.
 
 ## Prerequisites
 
@@ -115,6 +134,24 @@ mvn package
 ```
 
 The WAR output and all Maven compiler artifacts under `realesmgnt/target` are generated files and are ignored by Git.
+
+## Deploy to Firebase Hosting
+
+Thanks to demo mode, the frontend can be hosted as a static site on Firebase Hosting (`*.web.app`). The configuration lives in [`AngularProj/RealEst/firebase.json`](AngularProj/RealEst/firebase.json) and [`AngularProj/RealEst/.firebaserc`](AngularProj/RealEst/.firebaserc) and includes SPA rewrites and long-term asset caching.
+
+```powershell
+npm install -g firebase-tools
+firebase login
+
+cd AngularProj/RealEst
+# Set your Firebase project id in .firebaserc, or run:
+firebase use --add
+
+npm run build:firebase      # production build with root base href -> dist/RealEst
+firebase deploy --only hosting
+```
+
+The site is published to `https://<your-project>.web.app`. The `build:firebase` script builds with `--base-href /` so assets resolve at the domain root, and font inlining is disabled so the build succeeds without build-time network access. The hosted site runs on seed data, since the `localhost` backend is not reachable from a public domain.
 
 ## API
 
